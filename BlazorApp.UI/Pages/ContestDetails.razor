@@ -1,7 +1,37 @@
 ﻿@page "/contest-details"
+@using Model
 
-<h3>ContestDetails</h3>
+<h1>Contest Details</h1>
+
+<EditForm Model="@contest">
+    <table class="table">
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" @bind="contest.Name" /></td>
+        </tr>
+        <tr>
+            <td>Date:</td>
+            <td><input type="text" @bind="contest.Date" /></td>
+        </tr>
+        <tr>
+            <td>Additional information:</td>
+            <td><input type="text" @bind="contest.AdditionalInformation" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center">
+                <input type="submit" value="Save" onclick="SaveContest" />
+                <input type="button" value="Cancel" onclick="CancelContest" />
+            </td>
+        </tr>
+        
+    </table>
+</EditForm>
 
 @code {
+    Contest contest = new Contest();
 
+    protected void CancelContest()
+    {
+
+    }
 }
