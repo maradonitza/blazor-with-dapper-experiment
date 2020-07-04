@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp.UI", "BlazorApp.UI\BlazorApp.UI.csproj", "{B87A60DB-4231-48E0-BF44-4189EF83D3AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp.UI", "BlazorApp.UI\BlazorApp.UI.csproj", "{B87A60DB-4231-48E0-BF44-4189EF83D3AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp.Model", "BlazorApp.Model\BlazorApp.Model.csproj", "{7CB618CF-954C-4DCF-8B8C-7CC4003BEF98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp.Data.Dapper", "BlazorApp.Data.Dapper\BlazorApp.Data.Dapper.csproj", "{9646033C-7916-4F6E-8899-15989A36CEB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{B87A60DB-4231-48E0-BF44-4189EF83D3AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B87A60DB-4231-48E0-BF44-4189EF83D3AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B87A60DB-4231-48E0-BF44-4189EF83D3AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CB618CF-954C-4DCF-8B8C-7CC4003BEF98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CB618CF-954C-4DCF-8B8C-7CC4003BEF98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CB618CF-954C-4DCF-8B8C-7CC4003BEF98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CB618CF-954C-4DCF-8B8C-7CC4003BEF98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9646033C-7916-4F6E-8899-15989A36CEB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9646033C-7916-4F6E-8899-15989A36CEB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9646033C-7916-4F6E-8899-15989A36CEB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9646033C-7916-4F6E-8899-15989A36CEB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
