@@ -1,5 +1,7 @@
 ﻿@page "/contest-details"
 @using Model
+@using Interfaces 
+@inject BlazorApp.UI.Interfaces.IContestService ContestService
 
 <h1>Contest Details</h1>
 
@@ -19,8 +21,8 @@
         </tr>
         <tr>
             <td colspan="2" style="text-align:center">
-                <input type="submit" value="Save" onclick="SaveContest" />
-                <input type="button" value="Cancel" onclick="CancelContest" />
+                <input type="submit" value="Save" @onclick="SaveContest" />
+                <input type="button" value="Cancel" @onclick="CancelContest" />
             </td>
         </tr>
         
@@ -33,5 +35,10 @@
     protected void CancelContest()
     {
 
+    }
+
+    protected async Task SaveContest()
+    {
+        await ContestService.SaveContest(contest);
     }
 }
