@@ -31,7 +31,7 @@ namespace BlazorApp.Data.Dapper.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<Contest> GetContestDetails()
+        public Task<Contest> GetContestDetails(int id)
         {
             throw new NotImplementedException();
         }

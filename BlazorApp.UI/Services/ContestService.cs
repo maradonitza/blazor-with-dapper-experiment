@@ -30,7 +30,7 @@ namespace BlazorApp.UI.Services
             throw new NotImplementedException();
         }
 
-        public Task<Contest> GetDetails(int id)
+        public Task<Contest> GetContestDetails(int id)
         {
             throw new NotImplementedException();
         }
