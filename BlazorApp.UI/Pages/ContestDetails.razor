@@ -1,7 +1,9 @@
 ﻿@page "/contest-details"
+@page "/contest-details/{id:int}"
 @using Model
-@using Interfaces 
+@using Interfaces
 @inject BlazorApp.UI.Interfaces.IContestService ContestService
+@inject NavigationManager NavigationManager
 
 <h1>Contest Details</h1>
 
@@ -25,20 +27,36 @@
                 <input type="button" value="Cancel" @onclick="CancelContest" />
             </td>
         </tr>
-        
+
     </table>
 </EditForm>
 
 @code {
+    [Parameter]
+    public int id { get; set; }
+
     Contest contest = new Contest();
 
     protected void CancelContest()
     {
+        NavigationManager.NavigateTo("/contest-list");
+    }
 
+    protected override async Task OnInitializedAsync()
+    {
+        if(id == 0)
+        {
+            contest.Date = DateTime.UtcNow;
+        }
+        else
+        {
+            contest = await ContestService.GetContestDetails(id);
+        }
     }
 
     protected async Task SaveContest()
     {
         await ContestService.SaveContest(contest);
+        NavigationManager.NavigateTo("/contest-list");
     }
 }

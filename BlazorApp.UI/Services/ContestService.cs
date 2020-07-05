@@ -32,7 +32,7 @@ namespace BlazorApp.UI.Services
 
         public Task<Contest> GetContestDetails(int id)
         {
-            throw new NotImplementedException();
+            return _contestRepository.GetContestDetails(id);
         }
 
         public Task<bool> SaveContest(Contest contest)
@@ -40,7 +40,7 @@ namespace BlazorApp.UI.Services
             if (contest.Id == 0)
                 return _contestRepository.InsertContest(contest);
             else
-                return null;
+                return _contestRepository.UpdateContest(contest);
         }
     }
 }

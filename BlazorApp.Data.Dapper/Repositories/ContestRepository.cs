@@ -29,13 +29,15 @@ namespace BlazorApp.Data.Dapper.Repositories
         public async Task<IEnumerable<Contest>> GetAllContests()
         {
             var db = DbConnection();
-            var sql = @"SELECT [Name], [Date], [AdditionalInformation] FROM [dbo].[Contests] ";
+            var sql = @"SELECT [Id], [Name], [Date], [AdditionalInformation] FROM [dbo].[Contests] ";
             return await db.QueryAsync<Contest>(sql, new { });
         }
 
-        public Task<Contest> GetContestDetails(int id)
+        public async Task<Contest> GetContestDetails(int id)
         {
-            throw new NotImplementedException();
+            var db = DbConnection();
+            var sql = @"SELECT [Id], [Name], [Date], [AdditionalInformation] FROM [dbo].[Contests] where [Id] = @id";
+            return await db.QueryFirstOrDefaultAsync<Contest>(sql.ToString(), new { Id = id });
         }
 
         public async Task<bool> InsertContest(Contest contest)
@@ -48,9 +50,15 @@ namespace BlazorApp.Data.Dapper.Repositories
             return result > 0;
         }
 
-        public Task<bool> UpdateContest(Contest contest)
+        public async Task<bool> UpdateContest(Contest contest)
         {
-            throw new NotImplementedException();
+            var db = DbConnection();
+            var sql = @"
+                UPDATE [dbo].[Contests] 
+                SET [Name]=@Name, [Date]=@Date, [AdditionalInformation]=@AdditionalInfo
+                WHERE [Id]=@Id";
+            var result = await db.ExecuteAsync(sql.ToString(), new { contest.Name, contest.Date, AdditionalInfo = contest.AdditionalInformation, Id = contest.Id });
+            return result > 0;
         }
     }
 }
