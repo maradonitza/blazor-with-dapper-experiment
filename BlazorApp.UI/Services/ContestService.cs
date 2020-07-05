@@ -27,7 +27,7 @@ namespace BlazorApp.UI.Services
 
         public Task<IEnumerable<Contest>> GetContests()
         {
-            throw new NotImplementedException();
+            return _contestRepository.GetAllContests();
         }
 
         public Task<Contest> GetContestDetails(int id)

@@ -26,9 +26,11 @@ namespace BlazorApp.Data.Dapper.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Contest>> GetAllContests()
+        public async Task<IEnumerable<Contest>> GetAllContests()
         {
-            throw new NotImplementedException();
+            var db = DbConnection();
+            var sql = @"SELECT [Name], [Date], [AdditionalInformation] FROM [dbo].[Contests] ";
+            return await db.QueryAsync<Contest>(sql, new { });
         }
 
         public Task<Contest> GetContestDetails(int id)

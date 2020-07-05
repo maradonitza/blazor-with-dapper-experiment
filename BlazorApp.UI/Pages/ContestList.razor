@@ -1,0 +1,49 @@
+﻿@page "/contest-list"
+@using Model
+@using Interfaces
+@inject IContestService ContestService
+  
+<h1>Contest List</h1>
+
+@if(contests == null)
+{
+    <p> No contests info to display. </p>
+} else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Additional information</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contest in contests)
+            {
+            <tr>
+                <td>@contest.Name</td>
+                <td>@contest.Date</td>
+                <td>@contest.AdditionalInformation</td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+}
+
+@code {
+
+    private IEnumerable<Contest> contests;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try {
+            contests = await ContestService.GetContests();
+        } 
+        catch(Exception ex)
+        {
+            throw;
+        }
+    }
+}
