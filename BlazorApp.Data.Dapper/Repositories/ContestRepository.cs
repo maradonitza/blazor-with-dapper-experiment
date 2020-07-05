@@ -21,9 +21,14 @@ namespace BlazorApp.Data.Dapper.Repositories
         {
             return new SqlConnection(_connectionString);
         }
-        public Task<bool> DeleteContest(int id)
+        public async Task<bool> DeleteContest(int id)
         {
-            throw new NotImplementedException();
+            var db = DbConnection();
+            var sql = @"
+                DELETE FROM [dbo].[Contests]
+                WHERE Id = @Id";
+            var result = await db.ExecuteAsync(sql.ToString(), new { Id = id });
+            return result > 0;
         }
 
         public async Task<IEnumerable<Contest>> GetAllContests()

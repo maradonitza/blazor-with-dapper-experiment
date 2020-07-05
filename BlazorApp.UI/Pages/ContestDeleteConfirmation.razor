@@ -1,0 +1,53 @@
+﻿@page "/contest-delete/{id:int}"
+@using Interfaces
+@using Model
+@inject BlazorApp.UI.Interfaces.IContestService ContestService
+@inject NavigationManager NavigationManager
+
+<h3><p style="color: red; text-align: center">Are you sure you want to delete this contest?</p></h3>
+<p>This contest information is as follows:</p>
+
+<table class="table">
+    <tr>
+        <td>Name:</td>
+        <td><input type="text" @bind="contest.Name" /></td>
+    </tr>
+    <tr>
+        <td>Date:</td>
+        <td><input type="text" @bind="contest.Date" /></td>
+    </tr>
+    <tr>
+        <td>Additional information:</td>
+        <td><input type="text" @bind="contest.AdditionalInformation" /></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align:center">
+            <input type="submit" value="Delete contest" @onclick="DeleteContest" />
+            <input type="button" value="Cancel delete" @onclick="CancelDeleteContest" />
+        </td>
+    </tr>
+
+</table>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    Contest contest = new Contest();
+
+    protected async void DeleteContest()
+    {
+        await ContestService.DeleteContest(id);
+        NavigationManager.NavigateTo("/contest-list");
+    }
+
+    protected void CancelDeleteContest()
+    {
+        NavigationManager.NavigateTo("/contest-list");
+    }
+
+    protected async override Task OnInitializedAsync()
+    {
+        contest = await ContestService.GetContestDetails(id);
+    }
+}

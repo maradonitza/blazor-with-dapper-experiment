@@ -24,7 +24,7 @@
         <tr>
             <td colspan="2" style="text-align:center">
                 <input type="submit" value="Save" @onclick="SaveContest" />
-                <input type="button" value="Cancel" @onclick="CancelContest" />
+                <input type="button" value="Cancel" @onclick="CancelEditContest" />
             </td>
         </tr>
 
@@ -37,7 +37,7 @@
 
     Contest contest = new Contest();
 
-    protected void CancelContest()
+    protected void CancelEditContest()
     {
         NavigationManager.NavigateTo("/contest-list");
     }

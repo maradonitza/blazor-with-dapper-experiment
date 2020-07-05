@@ -22,7 +22,7 @@ namespace BlazorApp.UI.Services
 
         public Task<bool> DeleteContest(int id)
         {
-            throw new NotImplementedException();
+            return _contestRepository.DeleteContest(id);
         }
 
         public Task<IEnumerable<Contest>> GetContests()
